@@ -24,7 +24,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 'use strict'
+
+// npm
 const meow = require('meow')
+
+// self
 const rollodeqcGhUserEvents = require('./')
 
 const cli = meow([

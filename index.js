@@ -27,14 +27,12 @@ const qs = require('querystring')
 
 // npm
 const ghGot = require('gh-got')
-// const utils = require('rollodeqc-gh-utils')
 const bookworm = require('rollodeqc-gh-bookworm')
 
 const fetchPage = (options) => ghGot(
   typeof options === 'object'
     ? `users/${options.username}/events?` + qs.stringify(options)
-    : options// ,
-//  { headers: { accept: 'application/vnd.github.drax-preview+json' } }
+    : options
 )
 
 const methods = {
@@ -45,34 +43,7 @@ const methods = {
   }
 }
 
-// let limiter
-
 module.exports = (username) => bookworm.bookworm({
   username: username
 }, fetchPage, methods)
   .then((x) => x.body)
-/*
-  .then((x) => x
-    .map((y) => utils.chosenFields(y))
-    .map((y) => {
-      delete y.permissions
-      y.owner = { login: y.owner.login, id: y.owner.id, type: y.owner.type }
-      return y
-    })
-    .map((y) => omitBy(y, (v) => !v))
-  )
-  .then((x) => utils.rateLimit().then((rl) => {
-    limiter = module.exports.setLimiter(
-      5, Math.ceil(5 * (1000 * rl.rate.reset - Date.now()) / rl.rate.remaining))
-    return Promise.all(x.map((y) => fetchLanguages(y)))
-  }))
-*/
-
-/*
-module.exports.clearLimiter = function () { limiter = null }
-
-module.exports.setLimiter = function (c, t) {
-  limiter = rateLimit(c, t)
-  return limiter
-}
-*/
