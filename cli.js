@@ -24,7 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 'use strict'
-
 // npm
 const meow = require('meow')
 
@@ -45,9 +44,10 @@ const cli = meow([
   '  ponies & rainbows'
 ])
 
-// console.log(rollodeqcGhUserEvents(cli.input[0] || 'unicorns'))
-
 rollodeqcGhUserEvents(cli.input[0] || 'unicorns')
   .then((x) => {
     console.log(JSON.stringify(x, null, ' '))
+  })
+  .catch((e) => {
+    console.log('ERROR:', e)
   })

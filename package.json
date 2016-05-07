@@ -14,6 +14,7 @@
     "node": ">=4"
   },
   "scripts": {
+    "lint": "standard",
     "test": "standard && nyc ava",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
@@ -24,19 +25,23 @@
   "keywords": [
     "cli-app",
     "cli",
-    ""
+    "rollodeqc",
+    "github"
   ],
   "dependencies": {
     "gh-got": "^4.0.0",
+    "lodash.groupby": "^4.3.0",
+    "lodash.omit": "^4.2.1",
+    "lodash.omitby": "^4.3.0",
     "meow": "^3.7.0",
     "rollodeqc-gh-bookworm": "^0.3.0"
   },
   "devDependencies": {
     "ava": "^0.14.0",
-    "babel-eslint": "^6.0.3",
+    "babel-eslint": "^6.0.4",
     "coveralls": "^2.11.9",
-    "nyc": "^6.4.2",
-    "standard": "^6.0.8"
+    "nyc": "^6.4.3",
+    "standard": "^7.0.1"
   },
   "standard": {
     "parser": "babel-eslint"
