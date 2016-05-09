@@ -453,8 +453,8 @@ const processors = {
     console.error('UNPROCESSED EVENT TYPE:', event.type)
     return event
   },
-  CommitCommentEvent: (event) => event, //FIXME
-  PullRequestReviewCommentEvent: (event) => event, //FIXME
+  CommitCommentEvent: (event) => event, // FIXME
+  PullRequestReviewCommentEvent: (event) => event, // FIXME
   GollumEvent: (event) => {
     delete event.payload.pages.html_url
     return event
