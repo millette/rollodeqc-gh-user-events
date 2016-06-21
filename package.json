@@ -32,7 +32,7 @@
     "gh-got": "^4.0.0",
     "lodash.groupby": "^4.4.0",
     "lodash.omit": "^4.3.0",
-    "lodash.omitby": "^4.3.0",
+    "lodash.omitby": "^4.4.0",
     "meow": "^3.7.0",
     "rollodeqc-gh-bookworm": "^0.3.1"
   },
