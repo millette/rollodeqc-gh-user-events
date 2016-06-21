@@ -2,3 +2,7 @@ node_modules
 .nyc_output
 npm-debug.log
 bof
+jipi-events.json
+moimi.json
+moimi2.json
+v1
