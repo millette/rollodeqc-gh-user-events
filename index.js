@@ -47,7 +47,6 @@ const processors = {
     delete event.payload.pages.html_url
     return event
   },
-
   CreateEvent: (event) => event,
   DeleteEvent: (event) => event,
   ForkEvent: (event) => {
@@ -72,10 +71,13 @@ const processors = {
     }
     return event
   },
+  WatchEvent: (event) => event,
+  /*
   WatchEvent: (event) => {
     delete event.org
     return event
   },
+  */
   IssuesEvent: (event) => {
     event.payload.issue = omitBy(event.payload.issue, skipUrl)
     event.payload.issue = omit(event.payload.issue, ['user', 'assignee', 'milestone'])
@@ -118,28 +120,35 @@ const processors = {
   }
 }
 
-const fetchPage = (options) => ghGot(
-  typeof options === 'object'
-    ? `users/${options.username}/events?` + qs.stringify(options)
-    : options
-)
+const fetchPage = (options) =>
+  typeof options === 'string'
+  ? ghGot(options)
+  : ghGot(`users/${options.username}/events?` +
+    qs.stringify(omit(options, ['username', 'headers'])), options)
 
 const methods = {
   getItems: (result) => result && result.body,
   updateItems: (result, inner) => {
     inner.body = result.body.concat(inner.body)
+    if (result.headers) { inner.headers = result.headers }
     return inner
   }
 }
 
-module.exports = (username) => bookworm.bookworm({
-  username: username
-}, fetchPage, methods)
-  .then((x) => x.body)
-  .then((events) => events.map((event) => {
-    delete event.actor
-    delete event.repo.url
-    let type = event.type
-    if (!processors[type]) { type = 'nop' }
-    return processors[type](event)
-  }))
+module.exports = (username, etag) => {
+  const options = { username: username }
+  if (etag) { options.headers = { 'If-None-Match': etag } }
+  return bookworm.bookworm(options, fetchPage, methods)
+  .then((events) => {
+    return {
+      headers: events.headers,
+      events: events.body.map((event) => {
+        event.actor = { id: event.actor.id, login: event.actor.login }
+        delete event.repo.url
+        let type = event.type
+        if (!processors[type]) { type = 'nop' }
+        return processors[type](event)
+      })
+    }
+  })
+}
