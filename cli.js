@@ -27,9 +27,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // npm
 const meow = require('meow')
 const updateNotifier = require('update-notifier')
-const pkg = require('./package.json')
 
-updateNotifier({pkg}).notify()
+updateNotifier({ pkg: require('./package.json') }).notify()
 
 // self
 const rollodeqcGhUserEvents = require('./')
@@ -39,7 +38,7 @@ const cli = meow([
   '  $ rollodeqc-gh-user-events [input]',
   '',
   'Options',
-  '  --foo  Lorem ipsum. [Default: false]',
+  '  --etag  If-None-Match header value',
   '',
   'Examples',
   '  $ rollodeqc-gh-user-events',
@@ -48,7 +47,7 @@ const cli = meow([
   '  ponies & rainbows'
 ])
 
-rollodeqcGhUserEvents(cli.input[0] || 'unicorns')
+rollodeqcGhUserEvents(cli.input[0] || 'millette', cli.flags.etag)
   .then((x) => {
     console.log(JSON.stringify(x, null, ' '))
   })
