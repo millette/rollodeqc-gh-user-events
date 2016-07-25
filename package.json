@@ -1,6 +1,6 @@
 {
   "name": "rollodeqc-gh-user-events",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "RoLLodeQc utility to fetch user events.",
   "license": "AGPL-3.0",
   "repository": "millette/rollodeqc-gh-user-events",
