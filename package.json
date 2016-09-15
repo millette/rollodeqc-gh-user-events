@@ -29,20 +29,20 @@
     "github"
   ],
   "dependencies": {
-    "gh-got": "^4.0.0",
-    "lodash.groupby": "^4.4.0",
-    "lodash.omit": "^4.3.0",
-    "lodash.omitby": "^4.4.0",
+    "gh-got": "^5.0.0",
+    "lodash.groupby": "^4.6.0",
+    "lodash.omit": "^4.5.0",
+    "lodash.omitby": "^4.6.0",
     "meow": "^3.7.0",
     "rollodeqc-gh-bookworm": "^0.3.1",
     "update-notifier": "^1.0.2"
   },
   "devDependencies": {
-    "ava": "^0.15.2",
+    "ava": "^0.16.0",
     "babel-eslint": "^6.1.2",
-    "coveralls": "^2.11.11",
-    "nyc": "^7.0.0",
-    "standard": "^7.1.2"
+    "coveralls": "^2.11.12",
+    "nyc": "^8.1.0",
+    "standard": "^8.0.0"
   },
   "standard": {
     "parser": "babel-eslint"
