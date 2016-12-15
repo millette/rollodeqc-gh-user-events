@@ -34,15 +34,15 @@
     "lodash.omit": "^4.5.0",
     "lodash.omitby": "^4.6.0",
     "meow": "^3.7.0",
-    "rollodeqc-gh-bookworm": "^0.3.1",
-    "update-notifier": "^1.0.2"
+    "rollodeqc-gh-bookworm": "^0.4.0",
+    "update-notifier": "^1.0.3"
   },
   "devDependencies": {
-    "ava": "^0.16.0",
-    "babel-eslint": "^7.1.0",
-    "coveralls": "^2.11.14",
-    "nyc": "^8.4.0",
-    "standard": "^8.5.0"
+    "ava": "^0.17.0",
+    "babel-eslint": "^7.1.1",
+    "coveralls": "^2.11.15",
+    "nyc": "^10.0.0",
+    "standard": "^8.6.0"
   },
   "standard": {
     "parser": "babel-eslint"
