@@ -35,7 +35,7 @@
     "lodash.omitby": "^4.6.0",
     "meow": "^3.7.0",
     "rollodeqc-gh-bookworm": "^0.4.0",
-    "update-notifier": "^2.1.0"
+    "update-notifier": "^2.2.0"
   },
   "devDependencies": {
     "ava": "^0.19.1",
